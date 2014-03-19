@@ -8,9 +8,6 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
         $this->pss_gallery_config = $pss_gallery_config;
     }
 
-
-
-
     private function buildGallery() {
 
         $twidth  = $this->pss_gallery_config['thumbnailWidth'];
@@ -26,8 +23,7 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
 
         $options = $twidth."-".$theight."-".$gwidth."-".$gheight;
 
-        //$docid = $this->modx->documentIdentifier;
-        $docid = empty($this->pss_gallery_config['docId']) ? $this->modx->documentIdentifier : $this->pss_gallery_config['docId'];
+        $docid = $this->modx->documentIdentifier;
 
 		if(!empty($this->pss_gallery_config['countImages'])) {
             $limit = $this->pss_gallery_config['countImages'];
@@ -55,35 +51,15 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
         $sortStr = $sortBy." ".$order;
 
         //echo $sortStr;
-        if( empty($this->pss_gallery_config['randPreview']) ) {
 
-			$rs = $this->modx->db->select('*', $this->modx->getFullTableName('pss_gallery'),"document_id='$docid' AND visible=1",$sortStr,$limit);
-        }
-        else {
-            // нужно выдать какую-то ошибку
-            if( ! $startID = $this->pss_gallery_config['startID'] ) {
-                return false;
-            }
+       	$rs = $this->modx->db->select('*', $this->modx->getFullTableName('pss_gallery'),"document_id='$docid' AND visible=1",$sortStr,$limit);
 
-            if( $galleryDocs = $this->modx->getDocumentChildren($startID,1,0,'id') ){
-
-                $arrayIDs = array();
-
-                foreach($galleryDocs as $doc) {
-                    $arrayIDs[] = $doc['id'];
-                }
-
-                $rs = $this->modx->db->select('*', $this->modx->getFullTableName('pss_gallery'),"visible=1 AND document_id IN (". implode(',', $arrayIDs). ")");
-            }
-        }
-//@TODO продумать работу с превьюшками
         if ($this->modx->db->getRecordCount($rs) > 0) {
             while ($row = $this->modx->db->getRow($rs)) {
                 $image = $row;
 
                 if($row['options'] != $options) {
 
-                    $docid =  basename(dirname($image['url_original_image']));
                     $folder = MODX_BASE_PATH."assets/images/gallery/". $docid ."/";
                     $short_folder = "/assets/images/gallery/". $docid ."/";
 
@@ -96,7 +72,7 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
                     if(!empty($image['url_gallery_image']) && file_exists($gimage)) {
                         unlink($gimage);
                     }
-//print_r($image); exit;
+
                     $file_name = $image['file_name'];
                     $original_file_path = $folder."original_".$file_name;
 
@@ -117,10 +93,78 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
             }
         }
 
-		return  empty($this->pss_gallery_config['randPreview']) ? $images : $this->randArray($images) ;
+		return  $images;
 
     }
 
+    private function makePrview() {
+
+        $twidth  = $this->pss_gallery_config['thumbnailWidth'];
+        $theight = $this->pss_gallery_config['thumbnailHeight'];
+
+        if(empty($twidth) && empty($theight)) {
+            $twidth = 215;
+            $theight = 315;
+        }
+
+        $limit = empty($this->pss_gallery_config['countImages']) ? 4 : $this->pss_gallery_config['countImages'];
+
+        // нужно выдать какую-то ошибку
+        if( ! $startID = $this->pss_gallery_config['startID'] ) {
+            return array();
+        }
+
+        if( ! $galleryDocs = $this->modx->getDocumentChildren($startID,1,0,'id,pagetitle') ){
+            return array();
+        }
+
+        $arrayIDs = array();
+        $titles = array();
+
+        foreach($galleryDocs as $doc) {
+            $arrayIDs[] = $doc['id'];
+            $titles[ $doc['id'] ] =  $doc['pagetitle'];
+        }
+
+        $rs = $this->modx->db->select('*', $this->modx->getFullTableName('pss_gallery'),"visible=1 AND document_id IN (". implode(',', $arrayIDs). ")");
+
+        if( ! $rows = $this->modx->db->makeArray($rs) ) {
+            return array();
+        }
+
+        $randomImgs = $this->randArray($rows); // В массиве находится по 1 фото с каждой галереи
+        shuffle($randomImgs);  // перемешиваем
+
+        $link       = "/assets/images/gallery";
+        $basepath   = rtrim(MODX_BASE_PATH, "/");
+        $folder     = $basepath.$link;
+
+        @unlink($folder."/preview_*");
+
+        foreach( $randomImgs as $img ) {
+
+            $file_ext = array_reverse( explode(".",$img["file_name"]) )[0];
+            $filename = "preview_".$limit.".".$file_ext;
+
+            PSS_Utils_Image::resizeImage( $basepath.$img["url_original_image"], $folder."/".$filename, $twidth, $theight);
+
+            $docid = basename( dirname($img['url_original_image']) );
+
+            $img["title"]               = $titles[$docid];
+            $img["url_thumbnail_image"] = $link."/".$filename;
+
+            $images[] = $img;
+
+            $limit--;
+
+            if( $limit < 0 ) {
+                break;
+            }
+        }
+
+        return $images;
+
+    }
 	/*
 	 * В предположении, что входит ассоциированный массив
 	 * Ключом делаем предопределенное поле
@@ -218,14 +262,21 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
 
     function draw() {
 
-        $images = $this->buildGallery();
+        if( empty($this->pss_gallery_config['randPreview']) ) {
+            $images = $this->buildGallery();
+        }
+        else {
+            $images = $this->makePrview();
+        }
 
         if(count($images) > 0) {
             $this->ph["images"] = $images;
             $this->ph["image_attributes"] =  "";
             $this->ph["href_attributes"]  =  "";
 
-            $this->buildResources();
+            if( empty($this->pss_gallery_config['randPreview']) ) {
+                $this->buildResources();
+            }
             $this->buildAttr();
 
             if($this->pss_gallery_config['type'] == "custom" && isset($this->pss_gallery_config['itemTpl'])) {

@@ -1,0 +1,1 @@
+<div>[+lang.empty+]</div>
