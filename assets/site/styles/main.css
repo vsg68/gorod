@@ -288,6 +288,12 @@ a:hover{
     background: #B68F3D url(../images/skin-1y.jpg) repeat;
     overflow: hidden;
 }
+.preview {
+    width: 215px;
+    height: 315px;
+    overflow: hidden;
+}
+/*@todo сделать прилипание футера книзу + зазор до основной страницы */
 /*----------------------------------------------Header-------------------------------------*/
 #trust {
 	margin: 0 auto;

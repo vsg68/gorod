@@ -19,7 +19,6 @@ $pss_gallery_config["thumbnailWidth"]  = (isset($thumbnailWidth)) ? $thumbnailWi
 $pss_gallery_config["thumbnailHeight"] = (isset($thumbnailHeight)) ? $thumbnailHeight : null;
 $pss_gallery_config["galleryWidth"]  = (isset($galleryWidth)) ? $galleryWidth : 800;
 $pss_gallery_config["galleryHeight"] = (isset($galleryHeight)) ? $galleryHeight : 600;
-$pss_gallery_config["docId"] = (isset($docId)) ? $docId : null;
 $pss_gallery_config["startID"] = (isset($startID)) ? $startID : null;
 $pss_gallery_config["randPreview"] = (isset($randPreview)) ? $randPreview : null;
 

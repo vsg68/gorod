@@ -152,19 +152,20 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
 
             $img["title"]               = $titles[$docid];
             $img["url_thumbnail_image"] = $link."/".$filename;
+            $img["lastClass"]           = ($limit == 1) ? "lastbox" : "";
 
             $images[] = $img;
 
             $limit--;
 
-            if( $limit < 0 ) {
+            if( ! $limit  ) {
                 break;
             }
         }
 
         return $images;
-
     }
+
 	/*
 	 * В предположении, что входит ассоциированный массив
 	 * Ключом делаем предопределенное поле
