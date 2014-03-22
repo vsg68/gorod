@@ -1,0 +1,13 @@
+.gallery a {
+    width: 200px;
+    height: 150px;
+    display: block;
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.gallery img {
+    position: absolute;
+}
