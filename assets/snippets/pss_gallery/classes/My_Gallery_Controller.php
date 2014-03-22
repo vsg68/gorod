@@ -126,7 +126,7 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
             $titles[ $doc['id'] ] =  $doc['pagetitle'];
         }
 
-        $rs = $this->modx->db->select('*', $this->modx->getFullTableName('pss_gallery'),"visible=1 AND document_id IN (". implode(',', $arrayIDs). ")");
+        $rs = $this->modx->db->select('*', $this->modx->getFullTableName('pss_gallery'),"visible=1 AND document_id IN (". implode(',', $arrayIDs). ") ORDER BY document_id");
 
         if( ! $rows = $this->modx->db->makeArray($rs) ) {
             return array();
@@ -227,6 +227,12 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
                 $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/visuallightbox/js/visuallightbox.js");
                 $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/visuallightbox/js/vlbdata.js");
                 break;
+            case "ad-gallery":
+                $this->modx->regClientCSS("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/css/jquery.ad-gallery.css");
+                $this->modx->regClientCSS("/assets/site/styles/main.css");
+//                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery-1.7.2.min.js");
+                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery.ad-gallery.min.js");
+                $this->modx->regClientStartupScript("/assets/site/scripts/init.js");
         }
     }
 
@@ -250,6 +256,10 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
                 $attributes.= "class=\"vlightbox";
                 $attributes.= !empty($hrefClass) ? " $hrefClass\"" : "\"";
                 break;
+//            case "ad-gallery":
+//                $attributes.= "class=\"ad-gallery";
+//                $attributes.= !empty($hrefClass) ? " $hrefClass\"" : "\"";
+//                break;
             case "custom":
                 $attributes.= !empty($hrefClass) ? "class=\"$hrefClass\" " : "";
                 break;
@@ -280,13 +290,18 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
             }
             $this->buildAttr();
 
-            if($this->pss_gallery_config['type'] == "custom" && isset($this->pss_gallery_config['itemTpl'])) {
+            if( $this->pss_gallery_config['type'] == "custom" && isset($this->pss_gallery_config['itemTpl']) ){
                 foreach($images as $image) {
                     $this->ph["itemTpls"][]= $this->modx->parseChunk($this->pss_gallery_config['itemTpl'],$image, '[+', '+]');
                 }
                 $this->renderView("custom");
             } else {
-                $this->renderView("images");
+                if( $this->pss_gallery_config['type'] == "ad-gallery") {
+                    $this->renderView("images-ad");
+                }
+                else {
+                    $this->renderView("images");
+                }
             }
         } else
             if($this->pss_gallery_config['emptyShow']) {

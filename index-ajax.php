@@ -47,6 +47,6 @@ if($axhandler = (strtoupper($_SERVER['REQUEST_METHOD'])=='GET') ? $_GET['q'] : $
 		if ($allowed) {
             include_once($axhandler);
         }
-	}
+    }
 }
 ?>

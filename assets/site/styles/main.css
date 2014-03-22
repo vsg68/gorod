@@ -23,7 +23,6 @@ font-style: normal;
 
 html{
 	overflow-y:scroll; /* Forces a scrollbar when the viewport is larger than the websites content - CSS3 */
-	height:100%
 }
 
 body{
@@ -31,10 +30,8 @@ body{
 	padding:0;
 	font-size:13px;
 	font-family:'Arial', serif;
-	color:#979797;
-	background-color:#F7C875;
-	height:100%;
-    position:relative;
+	color:#838383;
+	background-color:#FFF;
 }
 
 .clear:after{
@@ -56,16 +53,6 @@ html[xmlns] .clear{
 	height:1%;
 }
 
-.height-8 {
-	height:8%;
-}
-.height-80 {
-	height:80%;
-}
-.height-13 {
-	height:120px;
-	border-bottom:1px solid #B68F3D;
-}
 /*
 code{font-weight:normal; font-style:normal; font-family:Georgia, "Times New Roman", Times, serif;}
 */
@@ -137,6 +124,17 @@ q:after{
 
 /* ----------------------------------------------Wrapper-------------------------------------*/
 
+html,
+body,
+#wrap {
+	height: 100%;
+}
+body > #wrap {
+	height: auto; 
+	min-height: 100%;
+	margin: 0 auto -61px;
+}
+
 div.wrapper{
 	display:block;
 	width:100%;
@@ -150,17 +148,18 @@ div.wrapper{
 }
 .row2{
 	background-color:#FFFFFF;
-    /*overflow: auto;*/
+    margin-bottom:10px;
+    padding-bottom: 61px;
 }
 .row3,
 .row3 a{
-	color:#6d6d6d;
+	color:#838383;
 }
 .row3 a:hover{
 	color:#979797;
 }
 .row3 {
-	background: #FFF;
+	height: 61px;
 }
 
 /*----------------------------------------------Generalise-------------------------------------*/
@@ -234,7 +233,7 @@ input, textarea, select{
 a{
 	outline:none;
 	text-decoration:none;
-	color:#C0BAB6;
+	color:#838383;
 }
 a:hover{
 	color: #FF9900;
@@ -270,7 +269,7 @@ a:hover{
 	padding-bottom: 5px;
 }
 .selected-item a{
-	color: #979797;
+	color: #c0c0c0;
 }
 .topmenu ul li {
 	font-size: 16px;
@@ -293,7 +292,6 @@ a:hover{
     height: 315px;
     overflow: hidden;
 }
-/*@todo сделать прилипание футера книзу + зазор до основной страницы */
 /*----------------------------------------------Header-------------------------------------*/
 #trust {
 	margin: 0 auto;
@@ -363,7 +361,7 @@ nav.topmenu {
 #container section{
 	display:block;
 	width:100%;
-	margin:0 0 30px 0;
+	margin:0 0 20px 0;
 	padding:0;
 }
 #container .last{
@@ -378,7 +376,7 @@ nav.topmenu {
 #container #homepage{
 	display:block;
 	width:100%;
-	line-height:1.6em;
+	/*line-height:1.6em;*/
 }
 
 #container #homepage #latest{}
@@ -516,6 +514,9 @@ nav.topmenu {
 	float:right;
 	width:280px;
 }
+#container #right_column h2{
+    margin-bottom: 10px;
+}
 #container #right_column nav{
 	display:block;
 	width:100%;
@@ -534,6 +535,7 @@ nav.topmenu {
 #container #right_column nav li.last{
 	margin-bottom:0;
 }
+.selected-item-project,
 #container #right_column nav a{
 	display:block;
 	margin:0;
@@ -545,6 +547,7 @@ nav.topmenu {
 	text-decoration:none;
 	border-bottom:1px dotted #666666;
 }
+.selected-item-project,
 #container #right_column nav a:hover{
 	color:#FF9900;
 	background-color:#FFFFFF;
@@ -591,4 +594,63 @@ p.ad-image-description {
 }
 
 
+/*--------------------------------------Calendar -------------------------*/
+
+#calendar  .date a:hover {
+    /*color: #fff;*/
+}
+#calendar .calendar {
+    border-collapse: collapse;
+    font: normal 12px Arial;
+    width: 250px;
+    margin: auto;
+    border: 1px solid #efefef;
+}
+#calendar .date {
+    border: 1px solid #A3A3A3;
+    padding: 3px;
+    height: 18px;
+}
+#calendar .date:hover {
+    border: 1px solid #838383;
+    background-color: #efefef;
+    /*color: #fff;*/
+}
+#calendar .month {
+    height: 30px;
+    font-size: 1.2em;
+}
+#calendar .workday,
+#calendar .weekend ,
+#calendar .month,
+#calendar .dow,
+#calendar .prev,
+#calendar .next {
+    text-align: center;
+    font-weight: bold;
+}
+#calendar .prev,
+#calendar .next {
+    font-size: 1.5em;
+    cursor: pointer;
+    border:none !important;
+}
+#calendar .weekend {
+    color: #55D400;
+}
+#calendar .emptyday {}
+#calendar .today  .date {
+    background: #979797;
+    border: 1px solid #888;
+    color: #fff;
+}
+#calendar .month {
+    border: none !important;
+}
+#calendar .prev:hover, .next:hover {
+    /*text-decoration: underline;*/
+}
+#calendar .isevent  .date a{
+  color: #0055ff !important;
+}
 
