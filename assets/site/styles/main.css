@@ -132,7 +132,6 @@ body,
 body > #wrap {
 	height: auto; 
 	min-height: 100%;
-	margin: 0 auto -61px;
 }
 
 div.wrapper{
@@ -148,7 +147,6 @@ div.wrapper{
 }
 .row2{
 	background-color:#FFFFFF;
-    margin-bottom:10px;
     padding-bottom: 61px;
 }
 .row3,
@@ -160,8 +158,29 @@ div.wrapper{
 }
 .row3 {
 	height: 61px;
+    margin: 0 auto -61px;
+    clear:both;
+    position: relative;
 }
-
+/* hack */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+/* Hides from IE-mac \*/
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
+}
+/* End hide from IE-mac */
 /*----------------------------------------------Generalise-------------------------------------*/
 
 #header,
@@ -356,7 +375,7 @@ nav.topmenu {
 /*----------------------------------------------Content Area-------------------------------------*/
 
 #container{
-	padding:15px 0;
+	padding:15px 0 0;
 }
 #container section{
 	display:block;
@@ -553,6 +572,7 @@ nav.topmenu {
 	background-color:#FFFFFF;
 }
 
+
 /*----------------------------------------------Footer-------------------------------------*/
 
 #footer{
@@ -595,19 +615,19 @@ p.ad-image-description {
 
 
 /*--------------------------------------Calendar -------------------------*/
-
+#calendar {
+    min-height: 210px;
+}
 #calendar  .date a:hover {
     /*color: #fff;*/
 }
 #calendar .calendar {
     border-collapse: collapse;
     font: normal 12px Arial;
-    width: 250px;
-    margin: auto;
-    border: 1px solid #efefef;
+    width: 100%;
 }
 #calendar .date {
-    border: 1px solid #A3A3A3;
+    border: 1px solid #DBDBDB;
     padding: 3px;
     height: 18px;
 }
@@ -651,6 +671,7 @@ p.ad-image-description {
     /*text-decoration: underline;*/
 }
 #calendar .isevent  .date a{
-  color: #0055ff !important;
+    color: #0055ff !important;
+    cursor: pointer;
 }
 

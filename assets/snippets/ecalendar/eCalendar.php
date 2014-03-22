@@ -153,9 +153,9 @@ if ( ! in_array('eventsCalendar', $classes_arr)) {
 
             $table = "<table class='$this->class_calendar'>";
             $table .= "<tr>
-						<td class='$this->class_prev'><a rel='$prev_month-$prev_year'>$this->btn_prev</a></td>
+						<td class='$this->class_prev'><a rel='$prev_year-$prev_month'>$this->btn_prev</a></td>
 						<td class='$this->class_month' colspan='5'>$month_name $year</td>
-						<td class='$this->class_next'><a rel='$next_month-$next_year'>$this->btn_next</a></td>
+						<td class='$this->class_next'><a rel='$next_year-$next_month'>$this->btn_next</a></td>
 					   </tr><tr>";
             foreach ($dow_names as $v) {
                 $table .= "<th class='$this->class_dow'>$v</th>";
@@ -167,6 +167,7 @@ if ( ! in_array('eventsCalendar', $classes_arr)) {
 
                         if (strlen($v[$i]) == 1) {$day = '0'.$v[$i];} else {$day = $v[$i];}
                         $date = $year.'-'.$month.'-'.$day;
+
                         if ($i == 5 || $i == 6) {
                             $class = $this->class_weekend;
                         }
@@ -200,7 +201,8 @@ if ( ! in_array('eventsCalendar', $classes_arr)) {
             /*	Вынимаем все используемые в этом месяце даты документов	*/
             $res = $modx->db->select("DATE_FORMAT(FROM_UNIXTIME($this->dateSource),'%d' ) AS day",
                 $modx->getFullTableName('site_content'),
-                "DATE_FORMAT(FROM_UNIXTIME($this->dateSource),'%m-%Y' )='".$month ."-". $year.
+                "DATE_FORMAT(FROM_UNIXTIME($this->dateSource),'%Y-%m' )='".$year ."-". $month.
+//                "DATE_FORMAT(FROM_UNIXTIME($this->dateSource),'%m-%Y' )='".$month ."-". $year.
                 "' AND deleted='0' AND published='1' AND parent='".$id."' GROUP BY day");
 
             while( $row = $modx->db->getRow( $res ) ) {  array_push ($days, $row["day"]); }
@@ -216,10 +218,14 @@ if ( ! in_array('eventsCalendar', $classes_arr)) {
 
 $Cal = new eventsCalendar;
 
-$tmp = ( isset( $ddate ) ) ? explode('-',$ddate) : array( date('m'), date('Y') );
-$Cal->month = ( is_numeric($tmp[0]) ) ? $tmp[0] : date('m');
+$tmp = ( isset( $ddate ) ) ? explode('-',$ddate) : array( date('Y'), date('m') );
+$Cal->month = ( is_numeric($tmp[1]) ) ? $tmp[1] : date('m');
 if ( strlen($Cal->month) == 1 ) {$Cal->month = '0'.$Cal->month;}
-$Cal->year = ( is_numeric($tmp[1]) ) ? $tmp[1] : date('Y');
+$Cal->year = ( is_numeric($tmp[0]) ) ? $tmp[0] : date('Y');
+//$tmp = ( isset( $ddate ) ) ? explode('-',$ddate) : array( date('m'), date('Y') );
+//$Cal->month = ( is_numeric($tmp[0]) ) ? $tmp[0] : date('m');
+//if ( strlen($Cal->month) == 1 ) {$Cal->month = '0'.$Cal->month;}
+//$Cal->year = ( is_numeric($tmp[1]) ) ? $tmp[1] : date('Y');
 
 /*  Если заданы параметры при вызове сниппета - переопределяем стандартные  */
 
