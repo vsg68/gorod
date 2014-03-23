@@ -610,7 +610,8 @@ div.stringR {
 	margin: 0 0 3px 3px;
 }
 p.ad-image-description {
-	display: none;
+    /*display:none;*/
+    line-height: 1.6em;
 }
 
 

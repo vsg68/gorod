@@ -230,7 +230,7 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
             case "ad-gallery":
                 $this->modx->regClientCSS("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/css/jquery.ad-gallery.css");
                 $this->modx->regClientCSS("/assets/site/styles/main.css");
-//                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery-1.7.2.min.js");
+                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery-1.8.0.min.js");
                 $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery.ad-gallery.min.js");
                 $this->modx->regClientStartupScript("/assets/site/scripts/init.js");
         }
