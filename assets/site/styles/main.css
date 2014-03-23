@@ -31,7 +31,7 @@ body{
 	font-size:13px;
 	font-family:'Arial', serif;
 	color:#838383;
-	background-color:#FFF;
+	background: url(/assets/site/images/linen.jpg) repeat  #eee;
 }
 
 .clear:after{
@@ -311,6 +311,13 @@ a:hover{
     height: 315px;
     overflow: hidden;
 }
+.page-404{
+    font-size:140px;
+    font-family: Arial, Verdana;
+    text-align: center;
+;
+}
+
 /*----------------------------------------------Header-------------------------------------*/
 #trust {
 	margin: 0 auto;
@@ -490,6 +497,9 @@ nav.topmenu {
 	left: 0;
 	font-family:'Ubuntu Condensed','Arial';
 }
+/*#container #content #services .news .lbl {*/
+    /*background: url(/images/lbl.jpg) no-repeat 50% 50%;*/
+/*}*/
 /*
 #container #content #services .text-news h2 { }
 */
