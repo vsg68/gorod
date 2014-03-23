@@ -180,7 +180,7 @@ if ( ! in_array('eventsCalendar', $classes_arr)) {
 
                         $table .= "<td class='$class'>".
                             (in_array( $v[$i], $events) ?
-                                "<div class='$this->class_date'><a rel='".$date."'>".$v[$i]."</a></div>" :
+                                "<div class='$this->class_date'><a href='/news?ddate=".$date."'>".$v[$i]."</a></div>" :
                                 "<div class='$this->class_date'>".$v[$i]."</div>" ).
                             "</td>";
                     }
