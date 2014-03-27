@@ -3,7 +3,7 @@
 # MODX Version:1.0.12
 # 
 # Host: 
-# Generation Time: 23-03-2014 20:10:45
+# Generation Time: 27-03-2014 16:25:44
 # Server version: 5.5.35-0ubuntu0.12.04.2
 # PHP Version: 5.4.25-1+sury.org~precise+2
 # Database : `gorod`
@@ -30,7 +30,7 @@ CREATE TABLE `modx_active_users` (
 # Dumping data for table `modx_active_users`
 #
 
-INSERT INTO `modx_active_users` VALUES ('1','admin','1395591045','','93','127.0.0.1');
+INSERT INTO `modx_active_users` VALUES ('1','admin','1395923144','','93','127.0.0.1');
 
 # --------------------------------------------------------
 
@@ -119,7 +119,7 @@ CREATE TABLE `modx_event_log` (
   `description` text,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 COMMENT='Stores event and error logs';
+) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COMMENT='Stores event and error logs';
 
 #
 # Dumping data for table `modx_event_log`
@@ -201,6 +201,8 @@ INSERT INTO `modx_event_log` VALUES ('73','0','1395564661','3','0','0','Snippet 
 INSERT INTO `modx_event_log` VALUES ('74','0','1395564661','3','0','0','phpmailer','Could not instantiate mail function.');
 INSERT INTO `modx_event_log` VALUES ('75','0','1395565844','3','0','0','Snippet - DittoWithParams','<h3 style=\"color:red\">&laquo; MODX Parse Error &raquo;</h3>\n	                <table border=\"0\" cellpadding=\"1\" cellspacing=\"0\">\n	                <tr><td colspan=\"2\">MODX encountered the following error while attempting to parse the requested resource:</td></tr>\n	                <tr><td colspan=\"2\"><b style=\"color:red;\">&laquo; PHP Parse Error &raquo;</b></td></tr><tr><td colspan=\"2\"><b>PHP error debug</b></td></tr><tr><td valign=\"top\">ErrorType[num] : </td><td>PARSING ERROR[4]</td></tr><tr><td>File : </td><td>/var/www/gorod/manager/includes/document.parser.class.inc.php(1005) : eval()\'d code</td></tr><tr><td>Line : </td><td>6</td></tr><tr><td>Source : </td><td>Snippet</td></tr><tr><td colspan=\"2\"><b>Basic info</b></td></tr><tr><td valign=\"top\" style=\"white-space:nowrap;\">REQUEST_URI : </td><td>/15/?ddate=2014-03-17</td></tr><tr><td valign=\"top\">Resource : </td><td>[15]<a href=\"http://gorod/index.php?id=15\" target=\"_blank\">test</a></td></tr><tr><td>Current Snippet : </td><td>DittoWithParams</td></tr><tr><td>Referer : </td><td></td></tr><tr><td>User Agent : </td><td>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/33.0.1750.152 Chrome/33.0.1750.152 Safari/537.36</td></tr><tr><td>IP : </td><td>127.0.0.1</td></tr><tr><td colspan=\"2\"><b>Benchmarks</b></td></tr><tr><td>MySQL : </td><td>0.0033 s (5 Requests)</td></tr><tr><td>PHP : </td><td>0.0499 s</td></tr><tr><td>Total : </td><td>0.0532 s</td></tr><tr><td>Memory : </td><td>1.2707443237305 mb</td></tr></table>\n<br /><p><b>Backtrace</b></p>\n<table><tr><td valign=\"top\">1</td><td>DocumentParser->executeParser()<br />index.php on line 140</td><tr><td valign=\"top\">2</td><td>DocumentParser->prepareResponse()<br />manager/includes/document.parser.class.inc.php on line 1568</td><tr><td valign=\"top\">3</td><td>DocumentParser->outputContent()<br />manager/includes/document.parser.class.inc.php on line 1673</td><tr><td valign=\"top\">4</td><td>DocumentParser->parseDocumentSource()<br />manager/includes/document.parser.class.inc.php on line 582</td><tr><td valign=\"top\">5</td><td>DocumentParser->evalSnippets()<br />manager/includes/document.parser.class.inc.php on line 1450</td><tr><td valign=\"top\">6</td><td>DocumentParser->_get_snip_result()<br />manager/includes/document.parser.class.inc.php on line 1061</td><tr><td valign=\"top\">7</td><td>DocumentParser->evalSnippet()<br />manager/includes/document.parser.class.inc.php on line 1147</td></table>\n');
 INSERT INTO `modx_event_log` VALUES ('76','0','1395565844','3','0','0','phpmailer','Could not instantiate mail function.');
+INSERT INTO `modx_event_log` VALUES ('77','0','1395918082','3','1','0','Системные файлы были изменены.','Вы включили проверку системных файлов на наличие изменений, характерных для взломанных сайтов. Это не значит, что сайт был взломан, но желательно просмотреть измененные файлы.(index.php, .htaccess, manager/index.php, manager/includes/config.inc.php)');
+INSERT INTO `modx_event_log` VALUES ('78','0','1395918082','3','1','0','phpmailer','Could not instantiate mail function.');
 
 # --------------------------------------------------------
 
@@ -238,7 +240,7 @@ CREATE TABLE `modx_manager_log` (
   `itemname` varchar(255) DEFAULT NULL,
   `message` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1511 DEFAULT CHARSET=utf8 COMMENT='Contains a record of user interaction.';
+) ENGINE=MyISAM AUTO_INCREMENT=1615 DEFAULT CHARSET=utf8 COMMENT='Contains a record of user interaction.';
 
 #
 # Dumping data for table `modx_manager_log`
@@ -1754,6 +1756,110 @@ INSERT INTO `modx_manager_log` VALUES ('1507','1395590997','1','admin','26','-',
 INSERT INTO `modx_manager_log` VALUES ('1508','1395591020','1','admin','17','-','-','Editing settings');
 INSERT INTO `modx_manager_log` VALUES ('1509','1395591038','1','admin','17','-','-','Editing settings');
 INSERT INTO `modx_manager_log` VALUES ('1510','1395591041','1','admin','93','-','-','Backup Manager');
+INSERT INTO `modx_manager_log` VALUES ('1511','1395897572','1','admin','93','-','-','Backup Manager');
+INSERT INTO `modx_manager_log` VALUES ('1512','1395897826','1','admin','27','3','-','Editing resource');
+INSERT INTO `modx_manager_log` VALUES ('1513','1395897832','1','admin','27','6','-','Editing resource');
+INSERT INTO `modx_manager_log` VALUES ('1514','1395897839','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1515','1395897841','1','admin','16','7','WinRotator','Editing template');
+INSERT INTO `modx_manager_log` VALUES ('1516','1395897852','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1517','1395897857','1','admin','78','7','TOPMENU','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1518','1395897883','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1519','1395897887','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1520','1395918082','1','admin','58','-','MODx','Logged in');
+INSERT INTO `modx_manager_log` VALUES ('1521','1395918086','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1522','1395918096','1','admin','22','2','if','Editing Snippet');
+INSERT INTO `modx_manager_log` VALUES ('1523','1395918156','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1524','1395918161','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1525','1395918388','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1526','1395918388','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1527','1395918392','1','admin','78','16','tpl-newsItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1528','1395918399','1','admin','97','16','-','Duplicate Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1529','1395918400','1','admin','78','24','Duplicate of tpl-newsItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1530','1395918414','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1531','1395918426','1','admin','78','24','Duplicate of tpl-newsItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1532','1395918606','1','admin','79','24','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1533','1395918606','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1534','1395918608','1','admin','77','-','New Chunk','Creating a new Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1535','1395918692','1','admin','79','-','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1536','1395918692','1','admin','78','25','tpl-singleSubMenuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1537','1395918755','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1538','1395918771','1','admin','78','7','TOPMENU','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1539','1395918817','1','admin','79','7','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1540','1395918817','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1541','1395918824','1','admin','78','7','TOPMENU','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1542','1395918828','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1543','1395918830','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1544','1395918883','1','admin','6','5','-','Deleting resource');
+INSERT INTO `modx_manager_log` VALUES ('1545','1395918885','1','admin','3','5','Продажа-Аренда','Viewing data for resource');
+INSERT INTO `modx_manager_log` VALUES ('1546','1395919035','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1547','1395919039','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1548','1395919051','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1549','1395919051','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1550','1395919138','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1551','1395919154','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1552','1395919154','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1553','1395919256','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1554','1395919260','1','admin','78','24','tpl-subMenuItems','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1555','1395919267','1','admin','79','24','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1556','1395919267','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1557','1395919339','1','admin','78','11','PROJECT-MENU','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1558','1395919384','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1559','1395919387','1','admin','78','12','tpl-projectItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1560','1395919395','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1561','1395919399','1','admin','78','24','tpl-subMenuItems','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1562','1395919408','1','admin','79','24','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1563','1395919408','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1564','1395919410','1','admin','78','25','tpl-singleSubMenuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1565','1395919424','1','admin','79','25','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1566','1395919425','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1567','1395919495','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1568','1395919601','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1569','1395919601','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1570','1395920382','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1571','1395920382','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1572','1395920426','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1573','1395920427','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1574','1395920491','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1575','1395920491','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1576','1395920513','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1577','1395920516','1','admin','78','24','tpl-subMenuItems','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1578','1395920609','1','admin','79','24','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1579','1395920609','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1580','1395920612','1','admin','77','-','New Chunk','Creating a new Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1581','1395920647','1','admin','79','-','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1582','1395920647','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1583','1395920653','1','admin','78','24','tpl-subMenuItems','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1584','1395920670','1','admin','79','24','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1585','1395920670','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1586','1395920729','1','admin','78','7','TOPMENU','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1587','1395920761','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1588','1395920769','1','admin','78','26','tpl-subMenuItems-orig','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1589','1395920780','1','admin','79','26','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1590','1395920780','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1591','1395920789','1','admin','78','24','tpl-subMenuItems','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1592','1395920806','1','admin','80','24','-','Deleting Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1593','1395920806','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1594','1395920809','1','admin','78','9','tpl-menuItemCurrent','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1595','1395920851','1','admin','79','9','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1596','1395920851','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1597','1395920859','1','admin','78','26','tpl-subMenuItems','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1598','1395920895','1','admin','79','26','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1599','1395920895','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1600','1395920899','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1601','1395920966','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1602','1395920966','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1603','1395921256','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1604','1395921256','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1605','1395921940','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1606','1395921940','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1607','1395921992','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1608','1395921992','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1609','1395922051','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1610','1395922051','1','admin','78','8','tpl-menuItem','Editing Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1611','1395922141','1','admin','79','8','-','Saving Chunk (HTML Snippet)');
+INSERT INTO `modx_manager_log` VALUES ('1612','1395922141','1','admin','76','-','-','Element management');
+INSERT INTO `modx_manager_log` VALUES ('1613','1395922190','1','admin','27','6','-','Editing resource');
+INSERT INTO `modx_manager_log` VALUES ('1614','1395923140','1','admin','93','-','-','Backup Manager');
 
 # --------------------------------------------------------
 
@@ -1941,7 +2047,7 @@ INSERT INTO `modx_site_content` VALUES ('1','document','text/html','Главна
 INSERT INTO `modx_site_content` VALUES ('2','document','text/html','Новости','','','news','','1','0','0','0','1','','[[DittoWithFilterDate? &startID=`2` &dateFormat=`%d.%m.%Y` &tpl=`tpl-newsItem`  &noResults=`tpl-noNews` ]]','0','8','0','1','0','1','1394961135','1','1395588811','0','0','0','1394961135','1','','0','0','0','0','0','0','0','1');
 INSERT INTO `modx_site_content` VALUES ('3','reference','text/html','Проекты','','','projects','','1','0','0','0','1','','6','0','3','0','0','0','1','1394961167','1','1395590904','0','0','0','1394961334','1','','1','0','0','0','0','0','0','1');
 INSERT INTO `modx_site_content` VALUES ('4','document','text/html','Контакты','','','contacts','','1','0','0','0','0','','','1','8','0','1','0','1','1394961218','1','1395588839','0','0','0','1394961355','1','','0','0','0','0','0','0','0','1');
-INSERT INTO `modx_site_content` VALUES ('5','document','text/html','Продажа-Аренда','','','arenda','','1','0','0','0','0','','','1','8','0','1','0','1','1394961278','1','1395588854','0','0','0','1394961318','1','','0','0','0','0','0','0','0','1');
+INSERT INTO `modx_site_content` VALUES ('5','document','text/html','Продажа-Аренда','','','arenda','','1','0','0','0','0','','','1','8','0','1','0','1','1394961278','1','1395588854','1','1395918883','1','1394961318','1','','0','0','0','0','0','0','0','1');
 INSERT INTO `modx_site_content` VALUES ('6','document','text/html','Авиа Плаза','','Достойное представление линейки  офисных центров класса А','','','1','0','0','3','0','','<p>Неоспоримыми преимуществами Бизнес-парка являются удачное месторасположение и транспортная доступность. В непосредственной близости пролегает шоссе Энтузиастов, расстояние до МКАД составляет 9 километров, до ТТК &ndash; 2,3 км., до Садового кольца &ndash; 3,5 км. Станция метро &laquo;Авиамоторная&raquo; расположена в шаговой доступности. Мы предлагаем самые лучшие верхние этажи, с евро-ремонтом высочайшего уровня, которые Вы можете использовать как для собственных нужд, так и для ведения арендного бизнеса, где Вашими партнерами-арендаторами станут крупнейшие компании России с мировыми именами. Минимальная площадь &ndash; 860 кв.м.<br /><br /></p>','1','7','0','1','0','1','1394987831','1','1395588997','0','0','0','1394987831','1','','0','0','0','0','0','0','0','1');
 INSERT INTO `modx_site_content` VALUES ('7','document','text/html','Виктория Плаза','','Современный деловой комплекс класса В+','','','1','0','0','3','0','','','1','7','1','1','0','1','1394987891','1','1395589865','0','0','0','1394987891','1','','0','0','0','0','0','0','0','1');
 INSERT INTO `modx_site_content` VALUES ('8','document','text/html','Торговый комплекс','','Торговый комплекс по вашему заказу','','','1','0','0','3','0','','','1','7','2','1','0','1','1394988067','1','1395590994','0','0','0','1394988067','1','','0','0','0','0','0','0','0','1');
@@ -1989,7 +2095,7 @@ CREATE TABLE `modx_site_htmlsnippets` (
   `snippet` mediumtext,
   `locked` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='Contains the site chunks.';
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='Contains the site chunks.';
 
 #
 # Dumping data for table `modx_site_htmlsnippets`
@@ -2002,9 +2108,9 @@ INSERT INTO `modx_site_htmlsnippets` VALUES ('3','rotator-еуые','jquery gall
 INSERT INTO `modx_site_htmlsnippets` VALUES ('4','HEADER','шапка','0','5','0','<header id=\"header\" class=\"clear\">\n   <hgroup>\n      <div id=\'trust\'><img src=\"/assets/site/images/trust-1.jpg\" alt=\"\"></div>\n      <div id=\'invest\'><span>ИНВЕСТИРУЕМ ГРАМОТНО</span></div>\n  </hgroup>\n  <div class=\'label\'><img src=\"/assets/site/images/label.png\" width=\"180\"  alt=\"\"></div>\n</header>\n<div class=\'string\'></div>','0');
 INSERT INTO `modx_site_htmlsnippets` VALUES ('5','FOOTER','подвал','0','5','0','<div class=\'stringR\'></div>\n  <div class=\"bg\">\n  <footer id=\"footer\" class=\"clear\">\n           <p class=\"fl_left\">Copyright &copy; 2012 - All Rights Reserved - <a href=\"#\">Domain Name</a></p>\n           <p class=\"fl_right\">Template by <a href=\"http://www.os-templates.com/\" title=\"Free Website Templates\">OS Templates</a></p>\n  </footer>\n</div>','0');
 INSERT INTO `modx_site_htmlsnippets` VALUES ('6','pageTile','заголовок страницы','0','5','0','<section id=\"shout\"  class=\'section\'>\n    <!-- Avia Plaza  -->\n<h2>[*description*]</h2>  \n    <!-- Достойное представление линейки офисных центров класса А -->\n<div>[*longtitle*]</div> \n</section>','0');
-INSERT INTO `modx_site_htmlsnippets` VALUES ('7','TOPMENU','верхнее меню','0','5','0','<nav class=\'topmenu\'>\n<ul>\n[[Ditto? startID=`0` &showInMenuOnly=`1` &sortBy=`menuindex` &tpl=`tpl-menuItem` &tplCurrentDocument=`tpl-menuItemCurrent`  &sortBy=`menuIndex` &sortDir=`DESC`]]\n</ul>\n</nav>','0');
-INSERT INTO `modx_site_htmlsnippets` VALUES ('8','tpl-menuItem','элемент верхнего меню','0','6','0','<li><a href=\"[+alias+]\">[+pagetitle+]</a></li>','0');
-INSERT INTO `modx_site_htmlsnippets` VALUES ('9','tpl-menuItemCurrent','элемент верхнего меню - текущий','0','6','0','<li class=\'selected-item\'>[+pagetitle+]</li>','0');
+INSERT INTO `modx_site_htmlsnippets` VALUES ('7','TOPMENU','верхнее меню','0','5','0','<nav class=\'topmenu\'>\n<ul class=\"dropdown\">\n[[Ditto? startID=`0` &showInMenuOnly=`1` &sortBy=`menuindex` &tpl=`tpl-menuItem` &tplCurrentDocument=`tpl-menuItemCurrent`  &sortBy=`menuIndex` &sortDir=`DESC`]]\n</ul>\n</nav>','0');
+INSERT INTO `modx_site_htmlsnippets` VALUES ('8','tpl-menuItem','элемент верхнего меню','0','6','0','<li><a href=\"[+alias+]\">[+pagetitle+]</a>\n[[if? &is=`[+id+]:is:3:and:[*parent*]:not:3` &then=`@TPL:tpl-subMenuItems`]]\n</li>','0');
+INSERT INTO `modx_site_htmlsnippets` VALUES ('9','tpl-menuItemCurrent','элемент верхнего меню - текущий','0','6','0','<li class=\'selected-item\'>[+pagetitle+]</li>\n[[if? &is=`[*id*]:not:3` &then=`@TPL:tpl-subMenuItems-orig`]]','0');
 INSERT INTO `modx_site_htmlsnippets` VALUES ('10','tpl-image','вывод картинок на главной','0','7','0','<article class=\"one_quarter [+lastClass+]\">\n  <figure >\n     <div class=\"preview\"><img src=\"[+url_thumbnail_image+]\" /></div>\n     <figcaption>[+title+]</figcaption>\n  </figure>\n</article>','0');
 INSERT INTO `modx_site_htmlsnippets` VALUES ('11','PROJECT-MENU','правое меню','0','5','0','<section>\n <h2 class=\"title\">Проекты</h2>\n      <nav>\n        <ul>\n[[Ditto? &startID=`3` &tpl=`tpl-projectItem`  &tplCurrentDocument=`tpl-projectItemCurrent` &sortBy=`menuindex` &sortDir=`ASC`]]\n        </ul>\n      </nav>\n</section>','0');
 INSERT INTO `modx_site_htmlsnippets` VALUES ('12','tpl-projectItem','Элемент правого меню','0','6','0','<li><a href=\"/projects/[+id+]\">[+pagetitle+]</a></li>','0');
@@ -2017,6 +2123,8 @@ INSERT INTO `modx_site_htmlsnippets` VALUES ('19','tpl-galleryItem-test','эле
 INSERT INTO `modx_site_htmlsnippets` VALUES ('21','JS','Подключение скриптов','0','2','0','<script type=\"text/javascript\" src=\"/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery-1.7.2.min.js\"></script>\n<script type=\"text/javascript\" src=\"/assets/site/scripts/init.js\"></script>','0');
 INSERT INTO `modx_site_htmlsnippets` VALUES ('22','GALLERY','Вывод галереи','0','5','0','<section id=\"rotator\" class=\"last clear\">\n  <div id=\"gallery\" class=\"ad-gallery\">\n     <div class=\"ad-image-wrapper\"></div>\n     <div class=\"ad-controls\"></div>\n     <div class=\"ad-nav\">\n        <div class=\"ad-thumbs\">\n           <ul class=\"ad-thumb-list\">\n       [[PSSGallery? &type=`ad-gallery` &thumbnailWidth=`90` &galleryWidth=`600`]]\n           </ul>\n        </div>\n     </div>\n  </div>  \n</section>\n<div>\n  [*content*]\n</div>','0');
 INSERT INTO `modx_site_htmlsnippets` VALUES ('23','tpl-noNews','Шаблон при отсутствии новостей','0','6','0','<p class=\"nonews\">Новостей на заданную дату нет..</p>','0');
+INSERT INTO `modx_site_htmlsnippets` VALUES ('25','tpl-singleSubMenuItem','элемент подменю проектов','0','6','0','<li><a href=\"/projects/[+id+]\">[+pagetitle+]</li>','0');
+INSERT INTO `modx_site_htmlsnippets` VALUES ('26','tpl-subMenuItems','подменю проектов','0','6','0','<ul class=\"sub_menu box-shadow\">\n   [[Ditto? &startID=`3` &tpl=`tpl-singleSubMenuItem` &sortBy=`menuindex` &sortDir=`ASC` ]]\n</ul>','0');
 
 # --------------------------------------------------------
 
@@ -2547,7 +2655,7 @@ INSERT INTO `modx_system_settings` VALUES ('number_of_messages','30');
 INSERT INTO `modx_system_settings` VALUES ('number_of_results','20');
 INSERT INTO `modx_system_settings` VALUES ('use_editor','1');
 INSERT INTO `modx_system_settings` VALUES ('use_browser','1');
-INSERT INTO `modx_system_settings` VALUES ('rb_base_dir','/var/www/gorod/assets/');
+INSERT INTO `modx_system_settings` VALUES ('rb_base_dir','/home/vsg/Dropbox/gorod/assets/');
 INSERT INTO `modx_system_settings` VALUES ('rb_base_url','assets/');
 INSERT INTO `modx_system_settings` VALUES ('which_editor','TinyMCE');
 INSERT INTO `modx_system_settings` VALUES ('fe_editor_lang','russian-UTF8');
@@ -2563,7 +2671,7 @@ INSERT INTO `modx_system_settings` VALUES ('upload_files','aac,au,avi,css,cache,
 INSERT INTO `modx_system_settings` VALUES ('upload_maxsize','1048576');
 INSERT INTO `modx_system_settings` VALUES ('new_file_permissions','0644');
 INSERT INTO `modx_system_settings` VALUES ('new_folder_permissions','0755');
-INSERT INTO `modx_system_settings` VALUES ('filemanager_path','/var/www/gorod/');
+INSERT INTO `modx_system_settings` VALUES ('filemanager_path','/home/vsg/Dropbox/gorod/');
 INSERT INTO `modx_system_settings` VALUES ('theme_refresher','');
 INSERT INTO `modx_system_settings` VALUES ('manager_layout','4');
 INSERT INTO `modx_system_settings` VALUES ('custom_contenttype','application/rss+xml,application/pdf,application/vnd.ms-word,application/vnd.ms-excel,text/html,text/css,text/xml,text/javascript,text/plain,application/json');
@@ -2677,7 +2785,7 @@ CREATE TABLE `modx_user_attributes` (
 # Dumping data for table `modx_user_attributes`
 #
 
-INSERT INTO `modx_user_attributes` VALUES ('1','1','Default admin account','1','tarkvsg@gmail.com','','','0','0','0','9','1395250586','1395552750','0','56u6e7v56beasqs8l9v56mi117','0','0','','','','','','','','');
+INSERT INTO `modx_user_attributes` VALUES ('1','1','Default admin account','1','tarkvsg@gmail.com','','','0','0','0','10','1395552750','1395918082','0','qpimajf578at6bgrtih61r1k33','0','0','','','','','','','','');
 
 # --------------------------------------------------------
 
