@@ -1,12 +1,13 @@
 $(document).ready(function() {
 
-    if( $('.ad-gallery').length ) {
-        $('.ad-gallery').adGallery({ thumb_opacity: 0.5,
-                                     slideshow: { enable: false},
-                                     effect: 'fade',
-                                     loader_image: '/assets/site/images/loader.gif'
-//                                     afterImageVisible: function(){ $('.ad-image-description').show('fast');}
-                                  });
+    if( $('#galleryC').length ) {
+//        firstHref = $('a.galleryC').get(0).href;
+//        $('#content img').wrap('<a href="' + firstHref+'"></a>');
+
+        $('#content .imgpad img').css('cursor', 'pointer')
+                         .click( function(){$('a.galleryC').click()});
+
+        $('a.galleryC').colorbox({rel:'galleryC'});
     };
 
     $("#calendar td a").live('click',function(){

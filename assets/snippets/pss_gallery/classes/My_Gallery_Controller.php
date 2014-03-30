@@ -133,7 +133,15 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
         }
 
         $randomImgs = $this->randArray($rows); // В массиве находится по 1 фото с каждой галереи
-        shuffle($randomImgs);  // перемешиваем
+
+        if( empty($documentsId) ) {
+            shuffle($randomImgs);  //отрезаем нужное число
+        }
+        else{
+            $randomImgs = $this->sortArrayByDocId($randomImgs, $documentsId);
+        }
+
+        array_splice( $randomImgs, $limit);  //отрезаем нужное число
 
         $link       = "/assets/images/gallery";
         $basepath   = rtrim(MODX_BASE_PATH, "/");
@@ -141,10 +149,10 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
 
         @unlink($folder."/preview_*");
 
-        foreach( $randomImgs as $img ) {
+        foreach( $randomImgs as $indx => $img ) {
 
             $file_ext = array_reverse( explode(".",$img["file_name"]) )[0];
-            $filename = "preview_".$limit.".".$file_ext;
+            $filename = "preview_".$indx.".".$file_ext;
 
             PSS_Utils_Image::resizeImage( $basepath.$img["url_original_image"], $folder."/".$filename, $twidth, $theight);
 
@@ -152,15 +160,9 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
 
             $img["title"]               = $titles[$docid];
             $img["url_thumbnail_image"] = $link."/".$filename;
-            $img["lastClass"]           = ($limit == 1) ? "lastbox" : "";
+            $img["lastClass"]           = ($indx == $limit-1) ? "lastbox" : "";
 
             $images[] = $img;
-
-            $limit--;
-
-            if( ! $limit  ) {
-                break;
-            }
         }
 
         return $images;
@@ -202,6 +204,30 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
         return $arr[$index];
     }
 
+    /*
+    * вынимаем из массива элементы по определенному признаку
+    */
+    protected function sortArrayByDocId($rows, $documentsId){
+
+        $ids = preg_split('/\s*,\s*/',$documentsId);
+
+        if( !count($ids) )
+            return;
+
+        $tmpYes = $tmpNo = array();
+
+        foreach($rows as $row){
+            if( in_array( $row['document_id'], $ids) ){
+                $tmpYes[] = $row;
+            }
+            else {
+                $tmpNo[] = $row;
+            }
+        }
+
+        return array_merge($tmpYes,$tmpNo);
+    }
+
     private function buildResources() {
         $type= $this->pss_gallery_config['type'];
 
@@ -227,13 +253,13 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
                 $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/visuallightbox/js/visuallightbox.js");
                 $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/visuallightbox/js/vlbdata.js");
                 break;
-            case "ad-gallery":
-                $this->modx->regClientCSS("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/css/jquery.ad-gallery.css");
-                $this->modx->regClientCSS("/assets/site/styles/main.css");
-                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery-1.8.0.min.js");
-                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/ad-gallery/js/jquery.ad-gallery.min.js");
+            case "colorbox":
+                $this->modx->regClientCSS("/assets/snippets/pss_gallery/res/gallireis/colorbox/css/colorbox.css");
+                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/colorbox/js/jquery-1.8.0.min.js");
+                $this->modx->regClientStartupScript("/assets/snippets/pss_gallery/res/gallireis/colorbox/js/jquery.colorbox.min.js");
                 $this->modx->regClientStartupScript("/assets/site/scripts/init.js");
-        }
+                break;
+         }
     }
 
     private function buildAttr() {
@@ -295,13 +321,12 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
                     $this->ph["itemTpls"][]= $this->modx->parseChunk($this->pss_gallery_config['itemTpl'],$image, '[+', '+]');
                 }
                 $this->renderView("custom");
-            } else {
-                if( $this->pss_gallery_config['type'] == "ad-gallery") {
-                    $this->renderView("images-ad");
-                }
-                else {
-                    $this->renderView("images");
-                }
+
+            }elseif( $this->pss_gallery_config['type'] == "colorbox") {
+                $this->renderView("images-color");
+            }
+            else {
+                $this->renderView("images");
             }
         } else
             if($this->pss_gallery_config['emptyShow']) {
