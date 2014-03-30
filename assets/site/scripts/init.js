@@ -15,10 +15,10 @@ $(document).ready(function() {
         $.post('/15',{ ddate: $(this).attr('rel')}, function(response){
                                                     $('#calendar').empty().append(response);  });
     });
-
-    if( $('.selected-item-project').length ) {
-        $('.topmenu  a').filter( function(){
-                                    return $(this).attr('href') === 'projects';})
-                         .closest('li').addClass('selected-item');
-    };
+//
+//    if( $('.selected-item-project').length ) {
+//        $('.topmenu  a').filter( function(){
+//                                    return $(this).attr('href') === 'projects';})
+//                         .closest('li').addClass('selected-item');
+//    };
 });

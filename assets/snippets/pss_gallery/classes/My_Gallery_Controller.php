@@ -151,8 +151,8 @@ class My_Gallery_Controller  extends PSS_Gallery_Controller {
 
         foreach( $randomImgs as $indx => $img ) {
 
-            $file_ext = array_reverse( explode(".",$img["file_name"]) )[0];
-            $filename = "preview_".$indx.".".$file_ext;
+            $file_ext = array_reverse( explode(".",$img["file_name"]) );
+            $filename = "preview_".$indx.".".$file_ext[0];
 
             PSS_Utils_Image::resizeImage( $basepath.$img["url_original_image"], $folder."/".$filename, $twidth, $theight);
 

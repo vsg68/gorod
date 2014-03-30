@@ -5,21 +5,9 @@ Author: OS Templates
 Author URI: http://www.os-templates.com/
 Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
 */
-@import "http://webfonts.ru/import/esqadero.css";
-@import "http://webfonts.ru/import/ubuntu.css";
-@import "http://webfonts.ru/import/osans.css";
-/*
-
-@font-face {
-font-family: 'Cuprum';
-src: url('cuprum-bold.eot');
-src: url('cuprum-bold.eot?#iefix') format('embedded-opentype'),
-url('cuprum-bold.woff') format('woff'),
-url('cuprum-bold.ttf') format('truetype');
-font-weight: bold;
-font-style: normal;
-}
-*/
+@import "esqadero.css";
+@import "ubuntu.css";
+@import "attentica.css";
 
 html{
 	overflow-y:scroll; /* Forces a scrollbar when the viewport is larger than the websites content - CSS3 */
@@ -30,8 +18,8 @@ body{
 	padding:0;
 	font-size:13px;
 	font-family:'Arial', serif;
-	color:#838383;
-	background-color:#FFF;
+	color:#777;
+	background: url(/assets/images/bg.jpg) #F0F0F0;
 }
 
 .clear:after{
@@ -134,7 +122,6 @@ body > #wrap {
 	min-height: 100%;
 	margin: 0 auto -61px;
 }
-
 div.wrapper{
 	display:block;
 	width:100%;
@@ -147,16 +134,15 @@ div.wrapper{
     height:120px;
 }
 .row2{
-	background-color:#FFFFFF;
     margin-bottom:10px;
     padding-bottom: 61px;
 }
 .row3,
 .row3 a{
-	color:#838383;
+	color:#eee;
 }
 .row3 a:hover{
-	color:#979797;
+	color:#fff;
 }
 .row3,.push {
 	height: 61px;
@@ -188,10 +174,10 @@ h6 {
 	font-size:16px;
 	font-weight:normal;
 	font-style:normal;
-	font-family:'Ubuntu Condensed','Arial';
+	font-family:'UbuntuCondensedRegular','Arial';
 	line-height:normal;
 	text-transform:uppercase;
-	color:#979797;
+	color:#777;
 }
 
 address{
@@ -274,7 +260,7 @@ a:hover{
 */
 .topmenu ul li {
 	font-size: 16px;
-	font-family:'Ubuntu Condensed','Arial';
+	font-family:'UbuntuCondensedRegular','Arial';
 	font-weight: normal;
 }
 .title{
@@ -285,7 +271,7 @@ a:hover{
 	padding: 5px;
 }
 .bg {
-    background: #B68F3D url(../images/skin-1y.jpg) repeat;
+    background: #B94D38 url('/assets/images/skin.jpg') repeat;
     overflow: hidden;
 }
 .preview {
@@ -301,13 +287,17 @@ a:hover{
 .with-radius {
     border-radius: 6px;
 }
+.page-404{
+    font-size: 130px;
+    text-align: center;
+}
 /*----------------------------------------------Header-------------------------------------*/
 #trust {
-	margin: 0 auto;
+
 }
 div.string {
     height:16px;
-    background: #B68F3D url('../images/string.jpg') repeat-x  ;
+    background: #B68F3D url('/assets/images/stringT.jpg') repeat-x  ;
 }
 #header{
 	padding:0;
@@ -316,27 +306,32 @@ div.string {
 	text-align: center;
 	position:relative;
 	text-transform:none;
-    height: 104px;
+    height: 98px;
 }
 #header hgroup #invest {
-    height: 20px;
-    background-color: #d40000;
-    position: absolute;
-    top: 80px;
-    left: 80px;
-    width: 150%;
-    border: 1px solid #930000;
-    box-shadow: 0 0 1px #CCCCCC inset;
-    color: #F5F2B2;
-    line-height: 20px;
+    margin-top: -15px;
 }
 #header hgroup #invest span{
-    margin-right: 250px;
-    font-family: 'Ubuntu Condensed',Tahoma;
-    font-size: 16px;
+    font-family: 'Esqadero',Sans;
+    font-size: 14px;
+    font-weight: bold;
+    color: #F0D88D;
+    text-shadow: 1px 1px 2px #000000, 0 0 0.1em #A52A2A;
+}
+#header hgroup #trust{
+	background: url('/assets/images/trust6.png') no-repeat 50% 0;
+	margin: 4px 0 auto;
+	padding-top: 5px;
 }
 #header hgroup #trust img {
-	margin-top:20px;
+	margin-top:30px;
+}
+.trust{
+	font-size: 80px;
+	font-family: 'Attentica','Arial';
+	text-transform: uppercase;
+	text-shadow: 1px 1px 2px #000000, 0 0 0.3em #A52A2A;
+	color: #F0D88D;
 }
 #header .label{
 	position: absolute;
@@ -395,7 +390,7 @@ nav.topmenu {
     font-size: 14px;
     padding:5px 0px 5px 20px;
     margin-right:-20px;
-    background:url("../images/orange_file.gif") no-repeat 10px center #fff;
+    background:url("/assets/images/orange_file.gif") no-repeat 10px center #ddd;
     text-decoration:none;
     /*border-bottom:1px dotted #666666;*/
 }
@@ -414,7 +409,7 @@ ul.dropdown ul ul {
 }
 #container section{
 	display:block;
-	width:100%;
+	/*width:100%;*/
 	margin:0 0 20px 0;
 	padding:0;
 }
@@ -430,7 +425,6 @@ ul.dropdown ul ul {
 #container #homepage{
 	display:block;
 	width:100%;
-	/*line-height:1.6em;*/
 }
 
 #container #homepage #latest{}
@@ -446,7 +440,6 @@ ul.dropdown ul ul {
 	color:#979797;
 	background-color:#EEEEEE;
 	text-transform:uppercase;
-	text-align:center;
 }
 
 /* ------Shout-----*/
@@ -465,9 +458,10 @@ ul.dropdown ul ul {
 #container #shout.intro{
     border: 1px dotted #666666;
     border-radius: 5px;
-    font-family: Ubuntu Condensed;
+    font-family: 'UbuntuCondensedRegular';
     font-size: 22px;
     padding: 10px;
+    background-color: #F0F0F0;
 }
 /*
 #container #shout p{font-size:20px; font-family: Courier; margin:0; padding:0; line-height:1.8em;}
@@ -475,7 +469,7 @@ ul.dropdown ul ul {
 #container #shout  h2{
 	font-size:24px;
 	font-weight:normal;
-	font-family: 'Esqadero', "Comfortaa", Tahoma;
+	font-family: 'Esqadero', 'Sans';
 	text-transform: uppercase;
 }
 
@@ -528,7 +522,7 @@ ul.dropdown ul ul {
 	position: absolute;
 	bottom: 12px;
 	left: 0;
-	font-family:'Ubuntu Condensed','Arial';
+	font-family:'UbuntuCondensedRegular','Arial';
 }
 /*
 #container #content #services .text-news h2 { }
@@ -539,7 +533,7 @@ ul.dropdown ul ul {
 #container #content #services .text-news {
 	margin-left:82px;
 	padding: 0 0 0 20px;
-	border-left: 3px solid #dedede;
+	border-left: 1px solid #eee;
 }
 #container #content #services .text-news span.next {
 	color:#FFA500;
@@ -562,7 +556,6 @@ ul.dropdown ul ul {
 }
 #container #content #rotator {
 	display:block;
-	margin:0px;
 	width:630px;
 	margin:0 auto;
 }
@@ -576,7 +569,7 @@ ul.dropdown ul ul {
 	display:block;
 	width:100%;
 	font-size:14px;
-	font-family:'Ubuntu Condensed','Arial';
+	font-family:'UbuntuCondensedRegular','Arial';
 }
 #container #right_column nav ul{
 	margin:0;
@@ -595,17 +588,14 @@ ul.dropdown ul ul {
 	display:block;
 	margin:0;
 	padding:5px 10px 5px 20px;
-/*
-	color:#666666;
-*/
-	background:url("../images/orange_file.gif") no-repeat 10px center #FFFFFF;
+	background:url("/assets/images/orange_file.gif") no-repeat 10px center;
 	text-decoration:none;
-	border-bottom:1px dotted #666666;
+	border-bottom:1px dotted #eee;
 }
 .selected-item-project,
 #container #right_column nav a:hover{
 	color:#FF9900;
-	background-color:#FFFFFF;
+	/*background-color:#FFFFFF;*/
 }
 /*----- Contacts ---*/
 #container div.about-img {
@@ -614,8 +604,7 @@ ul.dropdown ul ul {
     height:150px;
     margin-right:30px;
     padding:4px;
-    background: url(/assets/site/images/lb.png) no-repeat 50% 50%;
-    /*border:1px solid #666666;*/
+    background: url('/assets/site/images/lb.png') no-repeat 50% 50%;
 }
 #container div.about-text {
     float:right;
@@ -649,6 +638,7 @@ ul.dropdown ul ul {
     width: 250px;
     height: 150px;
     padding: 5px;
+     background-color: #F0f0f0;
 }
 .imgpad img {
     border: 1px solid #666666;
@@ -693,34 +683,10 @@ div.emphasise{
 }
 div.stringR {
     height:16px;
-    background: #B68F3D url('../images/stringR.jpg') repeat-x  ;
+    background: #B68F3D url('/assets/images/stringB.jpg') repeat-x  ;
     clear:both;
 }
 /*----------------------------------------------Gallery-------------------------------------*/
-
-/*.ad-gallery {*/
-	/*width: 600px;*/
-	/*padding: 4px;*/
-	/*border: 1px solid #ddd;*/
-/*}*/
-/*.ad-gallery .ad-image-wrapper {*/
-	/*height: 400px;*/
-/*}*/
-/*.ad-gallery .ad-thumbs li a img {*/
-	/*border: 1px solid #ddd;*/
-	/*padding:2px;*/
-/*}*/
-/*.ad-gallery .ad-thumbs li a.ad-active img {*/
-	/*border: 1px solid darkgrey;*/
-	/*padding:2px;*/
-/*}*/
-/*.ad-gallery .ad-info {*/
-	/*margin: 0 0 3px 3px;*/
-/*}*/
-/*p.ad-image-description {*/
-	/*display: none;*/
-/*}*/
-
 #galleryC {
     display: none;
 }
@@ -738,7 +704,7 @@ div.stringR {
     font: normal 12px Arial;
     width: 100%;
     margin: auto;
-    border: 1px solid #efefef;
+    /*border: 1px solid #eee;*/
 }
 #calendar .date {
     border: 1px solid #A3A3A3;
@@ -783,6 +749,6 @@ div.stringR {
     text-decoration: underline;
 }
 #calendar .isevent  .date {
-    color: #E0D9B0;
+    color: #18e026;
 }
 
